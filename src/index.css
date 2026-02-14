@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 240 6% 11%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 6% 11%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 211 100% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 4% 55%;
+    --accent: 211 100% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 4 90% 61%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 4% 20%;
+    --input: 240 4% 20%;
+    --ring: 211 100% 52%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-black text-white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Glass morphism utilities */
+  .glass {
+    @apply bg-[#1C1C1E]/60 backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-strong {
+    @apply bg-[#1C1C1E]/80 backdrop-blur-2xl border border-white/10;
+  }
+  
+  /* Custom scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Temperature gradient text */
+  .temp-gradient {
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Glow effects */
+  .glow-blue {
+    box-shadow: 0 0 40px rgba(10, 132, 255, 0.3);
+  }
+  
+  .glow-red {
+    box-shadow: 0 0 40px rgba(255, 69, 58, 0.3);
+  }
+  
+  .glow-yellow {
+    box-shadow: 0 0 40px rgba(255, 214, 10, 0.3);
+  }
+  
+  /* Shimmer animation */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Pulse glow animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(10, 132, 255, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(10, 132, 255, 0.4);
+    }
+  }
+  
+  /* Float animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Weather card hover */
+  .weather-card {
+    @apply transition-all duration-300;
+  }
+  
+  .weather-card:hover {
+    @apply scale-[1.02] -translate-y-0.5;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Gradient backgrounds */
+  .bg-gradient-clear {
+    background: linear-gradient(180deg, #000000 0%, #1A1508 50%, #2D2410 100%);
+  }
+  
+  .bg-gradient-cloudy {
+    background: linear-gradient(180deg, #000000 0%, #1C1C1E 50%, #2C2C2E 100%);
+  }
+  
+  .bg-gradient-rain {
+    background: linear-gradient(180deg, #000000 0%, #0A1628 50%, #102040 100%);
+  }
+  
+  .bg-gradient-night {
+    background: linear-gradient(180deg, #000000 0%, #0A0A0F 50%, #1C1C2E 100%);
+  }
+}
+
+@layer utilities {
+  /* Custom easing */
+  .ease-expo {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .ease-bounce {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* Perspective */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  /* 3D transforms */
+  .rotate-x-90 {
+    transform: rotateX(90deg);
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  /* Backdrop blur variants */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  .backdrop-blur-3xl {
+    backdrop-filter: blur(64px);
+  }
+}
+
+/* Selection color */
+::selection {
+  background: rgba(10, 132, 255, 0.3);
+  color: white;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgba(10, 132, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
